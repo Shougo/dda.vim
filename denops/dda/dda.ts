@@ -25,10 +25,23 @@ export class Dda {
 
     console.log(completion.choices);
     if (completion.choices.length > 0) {
-      await fn.append(
+      const currentText = await denops.call("dda#util#get_input") as string;
+      const texts = (currentText + completion.choices[0].text).split("\n");
+      await fn.setline(
         denops,
         await fn.line(denops, "."),
-        completion.choices[0].text.split("\n"),
+        texts,
+      );
+
+      const offsetRow = texts.length - 1;
+      const offsetCol = await fn.strlen(
+        denops,
+        texts[texts.length - 1],
+      ) as number;
+      await fn.cursor(
+        denops,
+        await fn.line(denops, ".") + offsetRow,
+        await fn.col(denops, ".") + offsetCol,
       );
     }
   }
