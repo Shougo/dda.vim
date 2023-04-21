@@ -1,19 +1,29 @@
-import {
-  batch,
-  Denops,
-  ensureObject,
-  vars,
-} from "./deps.ts";
+import { batch, Denops, ensureObject, ensureString, vars } from "./deps.ts";
 import { Dda } from "./dda.ts";
 
 export async function main(denops: Denops) {
   denops.dispatcher = {
-    async start(arg1: unknown): Promise<void> {
-      const userOptions = ensureObject(arg1);
+    async completion(
+      arg1: unknown,
+      arg2: unknown,
+      arg3: unknown,
+    ): Promise<void> {
+      const prompt = ensureString(arg1);
+      const suffix = ensureString(arg2);
+      const userOptions = ensureObject(arg3);
 
       const dda = new Dda();
 
-      await dda.start(denops, userOptions);
+      await dda.completion(denops, userOptions, prompt, suffix);
+    },
+    async edit(arg1: unknown, arg2: unknown, arg3: unknown): Promise<void> {
+      const input = ensureString(arg1);
+      const instruction = ensureString(arg2);
+      const userOptions = ensureObject(arg3);
+
+      const dda = new Dda();
+
+      await dda.edit(denops, userOptions, input, instruction);
     },
   };
 

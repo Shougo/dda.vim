@@ -1,5 +1,9 @@
-function! dda#start(options = {}) abort
-  call dda#_notify('start', [a:options])
+function! dda#completion(prompt, suffix = '', options = {}) abort
+  call dda#_notify('completion', [a:prompt, a:suffix, a:options])
+endfunction
+
+function! dda#edit(input, instruction, options = {}) abort
+  call dda#_notify('edit', [a:input, a:instruction, a:options])
 endfunction
 
 function! dda#_request(method, args) abort
