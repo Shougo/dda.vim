@@ -53,6 +53,7 @@ FUNCTIONS 						*dda-functions*
 dda#completion({prompt}, [{suffix}[, {options}]])
 		Complete {prompt} text.
 		{suffix} means after cursor text.
+		Note: Both {prompt} and {suffix} texts are sent to API.
 		Note: It append the current line.
 
 		Refer to |dda-options| about {options}.  If you skip a value,
@@ -61,6 +62,7 @@ dda#completion({prompt}, [{suffix}[, {options}]])
 							*dda#edit()*
 dda#edit({input}, [{instruction}[, {options}]])
 		Edit {input} text with {instruction} context.
+		Note: Both {input} and {instruction} texts are sent to API.
 		Note: It replaces the current line.
 
 		Refer to |dda-options| about {options}.  If you skip a value,
