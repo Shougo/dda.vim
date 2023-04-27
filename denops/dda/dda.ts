@@ -23,7 +23,7 @@ export class Dda {
       maxTokens: 2048,
     });
 
-    console.log(completion.choices);
+    //console.log(completion.choices);
     if (completion.choices.length > 0) {
       const currentText = await denops.call("dda#util#get_input") as string;
       const texts = (currentText + completion.choices[0].text).split("\n");
@@ -62,7 +62,7 @@ export class Dda {
       instruction,
     });
 
-    console.log(edit);
+    //console.log(edit);
     if (edit.choices.length > 0) {
       await fn.setline(
         denops,
