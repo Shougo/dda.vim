@@ -43,11 +43,11 @@ https://beta.openai.com/account/api-keys
 INTERFACE						*dda-interface*
 
 ------------------------------------------------------------------------------
-OPTIONS	 						*dda-options*
+OPTIONS							*dda-options*
 
 
 ------------------------------------------------------------------------------
-FUNCTIONS 						*dda-functions*
+FUNCTIONS						*dda-functions*
 
 							*dda#completion()*
 dda#completion({prompt}, [{suffix}[, {options}]])
@@ -92,7 +92,8 @@ EXAMPLES						*dda-examples*
 	    else
 	      " Use current buffer
 	      call dda#completion(
-	              \   getline([1, line('.') - offset]->max(), line('.') - 1)
+	              \   getline([1, line('.') - offset]->max(),
+	              \           line('.') - 1)
 	              \   ->add(dda#util#get_input())->join("\n"),
 	              \   getline(line('.') + 1, line('.') + offset)
 	              \   ->insert(dda#util#get_next_input())->join("\n")
