@@ -3,7 +3,7 @@
 Author: Shougo <Shougo.Matsu at gmail.com>
 License: MIT license
 
-CONTENTS						*dda-contents*
+CONTENTS                                                        *dda-contents*
 
 Introduction		|dda-introduction|
 Install			|dda-install|
@@ -16,7 +16,7 @@ Compatibility		|dda-compatibility|
 
 
 ==============================================================================
-INTRODUCTION						*dda-introduction*
+INTRODUCTION                                                *dda-introduction*
 
 *dda* is the abbreviation of "dark deno-powered AI".
 
@@ -25,7 +25,7 @@ It does not work with zero configuration.  You can use other plugins.
 
 
 ==============================================================================
-INSTALL							*dda-install*
+INSTALL                                                          *dda-install*
 
 Note: Dda.vim requires Neovim (0.8.0+) or Vim8.2.0662+ (latest is
 recommended).
@@ -40,16 +40,16 @@ https://beta.openai.com/account/api-keys
 
 
 ==============================================================================
-INTERFACE						*dda-interface*
+INTERFACE                                                      *dda-interface*
 
 ------------------------------------------------------------------------------
-OPTIONS							*dda-options*
+OPTIONS                                                          *dda-options*
 
 
 ------------------------------------------------------------------------------
-FUNCTIONS						*dda-functions*
+FUNCTIONS                                                      *dda-functions*
 
-							*dda#completion()*
+                                                            *dda#completion()*
 dda#completion({prompt}, [{suffix}[, {options}]])
 		Complete {prompt} text.
 		{suffix} means after cursor text.
@@ -59,7 +59,7 @@ dda#completion({prompt}, [{suffix}[, {options}]])
 		Refer to |dda-options| about {options}.  If you skip a value,
 		it uses the default value.
 
-							*dda#edit()*
+                                                                  *dda#edit()*
 dda#edit({input}, [{instruction}[, {options}]])
 		Edit {input} text with {instruction} context.
 		Note: Both {input} and {instruction} texts are sent to API.
@@ -69,7 +69,7 @@ dda#edit({input}, [{instruction}[, {options}]])
 		it uses the default value.
 
 ==============================================================================
-EXAMPLES						*dda-examples*
+EXAMPLES                                                        *dda-examples*
 >
 	" Completion with prompt
 	command! -nargs=* -range -bar
@@ -118,7 +118,7 @@ plugins.  You can donate money to help me!
 
 
 ==============================================================================
-COMPATIBILITY						*dda-compatibility*
+COMPATIBILITY                                              *dda-compatibility*
 
 
 ==============================================================================
