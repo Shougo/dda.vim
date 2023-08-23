@@ -1,7 +1,7 @@
 import { Denops, fn } from "./deps.ts";
 import { UserOptions } from "./types.ts";
 import { OpenAI } from "https://deno.land/x/openai@1.4.2/mod.ts";
-import { Env } from "https://deno.land/x/env@v2.2.3/env.js";
+import { Env } from "https://deno.land/x/env@v2.2.4/env.js";
 
 const env = new Env();
 

@@ -5,7 +5,7 @@ function! dda#util#get_text(mode = mode()) abort
 endfunction
 function! dda#util#get_input(mode = mode()) abort
   const is_insert = (a:mode ==# 'i') || (a:mode ==# 't')
-  const text = ddc#util#get_text(a:mode)
+  const text = dda#util#get_text(a:mode)
   const col = a:mode ==# 't' && !has('nvim') ?
         \ term_getcursor(bufnr('%'))[1] :
         \ a:mode ==# 'c' ? getcmdpos() : col('.')
@@ -20,6 +20,6 @@ function! dda#util#get_input(mode = mode()) abort
   return input
 endfunction
 function! dda#util#get_next_input(mode = mode()) abort
-  const text = ddc#util#get_text(a:mode)
-  return text[len(ddc#util#get_input(a:mode)) :]
+  const text = dda#util#get_text(a:mode)
+  return text[len(dda#util#get_input(a:mode)) :]
 endfunction
