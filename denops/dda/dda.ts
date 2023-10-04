@@ -1,9 +1,7 @@
 import { Denops, fn } from "./deps.ts";
 import { UserOptions } from "./types.ts";
 import { OpenAI } from "https://deno.land/x/openai@1.4.2/mod.ts";
-import { Env } from "https://deno.land/x/env@v2.2.4/env.js";
 
-const env = new Env();
 
 export class Dda {
   async completion(
@@ -12,7 +10,7 @@ export class Dda {
     prompt: string,
     suffix: string,
   ): Promise<void> {
-    const key = env.get("OPENAI_API_KEY", "");
+    const key = Deno.env.get("OPENAI_API_KEY");
 
     const openAI = new OpenAI(key);
 
@@ -52,7 +50,7 @@ export class Dda {
     input: string,
     instruction: string,
   ): Promise<void> {
-    const key = env.get("OPENAI_API_KEY", "");
+    const key = Deno.env.get("OPENAI_API_KEY");
 
     const openAI = new OpenAI(key);
 

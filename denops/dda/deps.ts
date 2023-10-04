@@ -16,15 +16,15 @@ export {
   ensureNumber,
   ensureObject,
   ensureString,
-} from "https://deno.land/x/unknownutil@v3.4.0/mod.ts";
+} from "https://deno.land/x/unknownutil@v3.9.0/mod.ts";
 export {
   assertEquals,
   equal,
-} from "https://deno.land/std@0.199.0/testing/asserts.ts";
-export { parse, toFileUrl } from "https://deno.land/std@0.199.0/path/mod.ts";
+} from "https://deno.land/std@0.203.0/testing/asserts.ts";
+export { parse, toFileUrl } from "https://deno.land/std@0.203.0/path/mod.ts";
 export { Lock } from "https://deno.land/x/async@v2.0.2/mod.ts";
 export {
   basename,
   dirname,
   sep as pathsep,
-} from "https://deno.land/std@0.199.0/path/mod.ts";
+} from "https://deno.land/std@0.203.0/path/mod.ts";
