@@ -1,6 +1,6 @@
 import { Denops, fn } from "./deps.ts";
 import { UserOptions } from "./types.ts";
-import { OpenAI } from "https://deno.land/x/openai@1.4.2/mod.ts";
+import { OpenAI } from "https://deno.land/x/openai@v4.24.1/mod.ts";
 
 
 export class Dda {
@@ -11,6 +11,10 @@ export class Dda {
     suffix: string,
   ): Promise<void> {
     const key = Deno.env.get("OPENAI_API_KEY");
+
+    if (!key) {
+      return;
+    }
 
     const openAI = new OpenAI(key);
 
