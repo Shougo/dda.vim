@@ -28,7 +28,7 @@ function! dda#_notify(method, args) abort
     return {}
   endif
 
-  if dda#_denops_running()
+  if dda#denops#_running()
     if denops#plugin#wait('dda')
       return {}
     endif
@@ -63,35 +63,9 @@ function! s:init() abort
   " Note: dda.vim must be registered manually.
 
   " Note: denops load may be started
-  autocmd dda User DenopsReady silent! call dda#_register()
   if 'g:loaded_denops'->exists() && denops#server#status() ==# 'running'
-    silent! call dda#_register()
+    silent! call dda#denops#_register()
+  else
+    autocmd dda User DenopsReady silent! call dda#denops#_register()
   endif
-endfunction
-
-const s:root_dir = '<sfile>'->expand()->fnamemodify(':h:h')
-const s:sep = has('win32') ? '\' : '/'
-function! dda#_register() abort
-  call denops#plugin#register('dda',
-        \ [s:root_dir, 'denops', 'dda', 'app.ts']->join(s:sep),
-        \ #{ mode: 'skip' })
-
-  autocmd dda User DenopsClosed call s:stopped()
-endfunction
-
-function! s:stopped() abort
-  unlet! g:dda#_initialized
-
-  " Restore custom config
-  if 'g:dda#_customs'->exists()
-    for custom in g:dda#_customs
-      call dda#_notify(custom.method, custom.args)
-    endfor
-  endif
-endfunction
-
-function! dda#_denops_running() abort
-  return 'g:loaded_denops'->exists()
-        \ && denops#server#status() ==# 'running'
-        \ && denops#plugin#is_loaded('dda')
 endfunction
