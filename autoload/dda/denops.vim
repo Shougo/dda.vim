@@ -1,11 +1,18 @@
 const s:root_dir = '<sfile>'->expand()->fnamemodify(':h:h:h')
 const s:sep = has('win32') ? '\' : '/'
 function! dda#denops#_register() abort
-  call denops#plugin#register('dda',
-        \ [s:root_dir, 'denops', 'dda', 'app.ts']->join(s:sep),
-        \ #{ mode: 'skip' })
+  call dda#denops#_load('dda',
+        \ [s:root_dir, 'denops', 'dda', 'app.ts']->join(s:sep))
 
   autocmd dda User DenopsClosed call s:stopped()
+endfunction
+function dda#denops#_load(name, path) abort
+  try
+    call denops#plugin#load(a:name, a:path)
+  catch /^Vim\%((\a\+)\)\=:E117:/
+    " Fallback to `register` for backward compatibility
+    call denops#plugin#register(a:name, a:path, #{ mode: 'skip' })
+  endtry
 endfunction
 
 function! s:stopped() abort
