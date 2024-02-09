@@ -1,6 +1,6 @@
 import { Denops, fn } from "./deps.ts";
 import { UserOptions } from "./types.ts";
-import { OpenAI } from "https://deno.land/x/openai@v4.24.1/mod.ts";
+import { OpenAI } from "https://deno.land/x/openai@v4.27.0/mod.ts";
 
 export class Dda {
   async completion(
